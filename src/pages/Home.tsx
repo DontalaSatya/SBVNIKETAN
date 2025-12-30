@@ -6,7 +6,7 @@ export default function Home() {
       <section className="relative h-[600px] bg-gradient-to-r from-blue-900 to-blue-700 overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <img
-            src="/whatsapp_image_2025-12-27_at_10.18.31_pm.jpeg"
+            src="/whatsapp_image_2025-12-27_at_10.18.31_pm.png"
             alt="School Building"
             className="w-full h-full object-cover"
           />
@@ -19,16 +19,10 @@ export default function Home() {
             <p className="text-2xl md:text-3xl mb-8 font-light italic text-blue-100">
               Nurturing Next Generation with Purpose Driven Learning
             </p>
-            <p className="text-lg md:text-xl mb-8 leading-relaxed">
-              Empowering young minds from Kindergarten to 10th Standard with quality education,
-              strong values, and holistic development in Anandapuram, Visakhapatnam.
-            </p>
+            
             <div className="flex flex-wrap gap-4">
-              <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg">
-                Explore Our Campus
-              </button>
               <button className="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-all border-2 border-white">
-                Apply Now
+              <a href="tel:+919052104849">Contact Us</a>
               </button>
             </div>
           </div>
@@ -192,8 +186,8 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Contact Us</h3>
                   <p className="text-gray-700 mb-2">Phone Numbers:</p>
-                  <p className="text-lg font-semibold text-blue-600">8919990688</p>
-                  <p className="text-lg font-semibold text-blue-600">9052104849</p>
+                  <p className="text-lg font-semibold text-blue-600"><a href="tel:+919052104849">9052104849</a></p>
+                  <p className="text-lg font-semibold text-blue-600"><a href="tel:+918919984800">8919984800</a></p>
                 </div>
               </div>
             </div>

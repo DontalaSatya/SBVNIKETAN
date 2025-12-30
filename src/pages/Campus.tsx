@@ -1,4 +1,5 @@
 import { Calendar, Clock, Palette, Music, Trophy, Heart, Globe, BookOpen } from 'lucide-react';
+import ImageCarousel from '../components/ImageCarousel';
 
 export default function Campus() {
   return (
@@ -22,11 +23,17 @@ export default function Campus() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src="/whatsapp_image_2025-12-27_at_10.18.31_pm.jpeg"
-                alt="School Building"
-                className="w-full h-full object-cover"
+            <div className="rounded-2xl overflow-hidden shadow-xl h-[500px]">
+              <ImageCarousel
+                images={[
+                  '/whatsapp_image_2025-12-27_at_10.18.31_pm.png',
+                  '/whatsapp_image_2025-12-25_at_6.11.46_am.jpeg',
+                  '/gemini_generated_image_iclypqiclypqicly_(1).png',
+                  '/Screenshot 2025-12-27 230524.jpg'
+                ]}
+                alt="School Campus"
+                className="w-full h-96"
+                autoScrollInterval={5000}
               />
             </div>
             <div className="space-y-6">
@@ -128,10 +135,16 @@ export default function Campus() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-2xl overflow-hidden shadow-xl">
-              <img
-                src="/whatsapp_image_2025-12-25_at_6.11.46_am.jpeg"
-                alt="Teachers Event"
-                className="w-full h-96 object-cover"
+              <ImageCarousel
+                images={[
+                  '/whatsapp_image_2025-12-25_at_6.11.46_am.jpeg',
+                  '/whatsapp_image_2025-12-27_at_10.18.31_pm.png',
+                  '/gemini_generated_image_iclypqiclypqicly_(1).png',
+                  '/Screenshot 2025-12-27 230524.jpg'
+                ]}
+                alt="School Events"
+                className="w-full h-96"
+                autoScrollInterval={3500}
               />
             </div>
             <div className="space-y-6">

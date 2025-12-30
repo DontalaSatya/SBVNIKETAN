@@ -6,36 +6,166 @@ interface TeamMember {
   image: string;
   qualification: string;
   designation: string;
-  experience: string;
-  interests: string;
-  hobbies: string;
+  Discipline: string;
+  
   isPrincipal?: boolean;
 }
 
 export default function Team() {
   const principal: TeamMember = {
     id: 0,
-    name: 'Principal Name',
-    image: '/api/placeholder/400/400',
+    name: 'Y Krishna Sir',
+    image: '/faculty16.jpeg',
+    qualification: 'B.Ed.',
+    designation: 'Principal',
+    Discipline: 'Mathematics',
+    
+      isPrincipal: true,
+  };
+  const teachers: TeamMember = {
+    id: 0,
+    name: 'P Ramana Sir',
+    image: '/faculty2.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'English',
+    
+  };
+  const teachers1: TeamMember = {
+    id: 0,
+    name: 'K Shankar Sir',
+    image: '/faculty3.jpeg',
+    qualification: 'B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'Social Studies',
+   
+  };
+  const teachers2: TeamMember = {
+    id: 0,
+    name: 'K Rambabu Sir',
+    image: '/faculty4.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'Life Sciences',
+   
+  };
+  const teachers3: TeamMember = {
+    id: 0,
+    name: 'I Raja Babu Sir',
+    image: '/faculty5.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'English',
+   
+  };
+  const teachers4: TeamMember = {
+    id: 0,
+    name: 'M Vamsi Sir',
+    image: '/faculty6.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'English',
+  };
+  const teachers5: TeamMember = {
+    id: 0,
+    name: 'B Dileep Kumar Sir',
+    image: '/faculty7.jpeg',
     qualification: 'M.Ed., B.Ed.',
     designation: 'Principal',
-    experience: '20+ Years',
-    interests: 'Educational Leadership, Curriculum Development',
-    hobbies: 'Reading, Mentoring',
-    isPrincipal: true,
+    Discipline: 'English',
+   
+  };
+  const teachers6: TeamMember = {
+    id: 0,
+    name: "E Uma Maheswari Ma'am",
+    image: '/faculty8.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers7: TeamMember = {
+    id: 0,
+    name: "P Sravani Ma'am",
+    image: '/faculty9.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers8: TeamMember = {
+    id: 0,
+    name: "P Sirisha Ma'am",
+    image: '/faculty10.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers9: TeamMember = {
+    id: 0,
+    name: "R Lalitha Ma'am",
+    image: '/faculty11.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers10: TeamMember = {
+    id: 0,
+    name: "K Anuradha Ma'am",
+    image: '/faculty12.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers11: TeamMember = {
+    id: 0,
+    name: "B Pydiraju Ma'am",
+    image: '/faculty13.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Primary School Faculty',
+    Discipline: 'All Subjects',
+   
+  };
+  const teachers12: TeamMember = {
+    id: 0,
+    name: "K Rama Lakshmi Ma'am",
+    image: '/faculty14.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Principal',
+    Discipline: 'English',
+   
+  };
+  const teachers13: TeamMember = {
+    id: 0,
+    name: "G Akhila Ma'am",
+    image: '/faculty15.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Primary School Faculty',
+    Discipline: 'Mathematics & English',
+   
   };
 
-  const teachers: TeamMember[] = Array.from({ length: 29 }, (_, i) => ({
-    id: i + 1,
-    name: `Teacher ${i + 1}`,
-    image: '/api/placeholder/400/400',
-    qualification: 'B.Ed., M.A.',
-    designation: 'Subject Teacher',
-    experience: '5+ Years',
-    interests: 'Teaching, Student Development',
-    hobbies: 'Reading, Sports',
-  }));
-
+  const teachers15: TeamMember = {
+    id: 0,
+    name: "P Renuka Ma'am",
+    image: '/faculty17.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Primary School Faculty',
+    Discipline: 'All Subjects',
+   
+  };
+  const teachers16: TeamMember = {
+    id: 0,
+    name: "B Bharathi Ma'am",
+    image: '/faculty18.jpeg',
+    qualification: 'M.Ed., B.Ed.',
+    designation: 'Primary School Faculty',
+    Discipline: 'Mathematics & English',
+   
+  };
   const TeacherCard = ({ member, featured = false }: { member: TeamMember; featured?: boolean }) => (
     <div
       className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1 ${
@@ -47,10 +177,20 @@ export default function Team() {
           <div className="text-center">
             <div
               className={`${
-                featured ? 'w-48 h-48' : 'w-32 h-32'
-              } mx-auto rounded-full bg-white shadow-lg flex items-center justify-center mb-4 overflow-hidden`}
+                featured ? 'w-[220px] h-[250px]' : 'w-[220px] h-[270px]'
+              } mx-auto rounded full bg-white shadow-lg mb-4 overflow-hidden relative`}
             >
-              <User className="text-gray-400" size={featured ? 96 : 64} />
+              {member.image && member.image !== '/api/placeholder/400/400' ? (
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <User className="text-gray-400" size={featured ? 96 : 64} />
+                </div>
+              )}
             </div>
             {featured && (
               <div className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold text-sm">
@@ -84,30 +224,16 @@ export default function Team() {
             <div className="flex items-start space-x-3">
               <Clock className="text-orange-600 flex-shrink-0 mt-1" size={20} />
               <div>
-                <p className="text-sm font-semibold text-gray-700">Experience</p>
-                <p className="text-gray-600">{member.experience}</p>
+                <p className="text-sm font-semibold text-gray-700">Area of Expertise</p>
+                <p className="text-gray-600">{member.Discipline}</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-3">
-              <Heart className="text-red-600 flex-shrink-0 mt-1" size={20} />
-              <div>
-                <p className="text-sm font-semibold text-gray-700">Interests</p>
-                <p className="text-gray-600">{member.interests}</p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3">
-              <Heart className="text-purple-600 flex-shrink-0 mt-1" size={20} />
-              <div>
-                <p className="text-sm font-semibold text-gray-700">Hobbies</p>
-                <p className="text-gray-600">{member.hobbies}</p>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    
   );
 
   return (
@@ -125,10 +251,7 @@ export default function Team() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Leadership</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Visionary leadership guiding the institution towards excellence
-            </p>
+            
           </div>
 
           <div className="grid gap-8 mb-16">
@@ -143,9 +266,26 @@ export default function Team() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teachers.map((teacher) => (
-              <TeacherCard key={teacher.id} member={teacher} />
-            ))}
+        
+              <TeacherCard  member={teachers} />
+              <TeacherCard  member={teachers1} />
+              <TeacherCard  member={teachers2} />
+              <TeacherCard  member={teachers3} />
+              <TeacherCard  member={teachers4} />
+              <TeacherCard  member={teachers5} />
+              <TeacherCard  member={teachers6} />
+              <TeacherCard  member={teachers7} />
+              <TeacherCard  member={teachers8} />
+              <TeacherCard  member={teachers9} />
+              <TeacherCard  member={teachers10} />
+              <TeacherCard  member={teachers11} />
+              <TeacherCard  member={teachers12} />
+              <TeacherCard  member={teachers13} />
+              
+              <TeacherCard  member={teachers15} />
+              <TeacherCard  member={teachers16} />
+
+            
           </div>
         </div>
       </section>
