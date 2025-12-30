@@ -141,11 +141,13 @@ export default function Campus() {
                   
                   '/Grouppicture.png',
                   
-                  
-                  
                   '/video4.mp4',
                   '/video5.mp4',
+                  '/video7.mp4',
+                  
+                  '/video6.mp4',
                   '/video3.mp4',
+                  '/video1.mp4',
                   
                   
               
