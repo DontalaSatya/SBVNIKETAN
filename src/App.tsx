@@ -65,12 +65,17 @@ function App() {
                     Admissions
                   </button>
                 </li>
+                <li>
+                  <button onClick={() => setCurrentPage('team')} className="text-gray-400 hover:text-white transition-colors">
+                  Our Faculty
+                  </button>
+                </li>
               </ul>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Contact Info</h3>
-              <p className="text-gray-400 mb-2">8919990688</p>
-              <p className="text-gray-400 mb-2">9052104849</p>
+              <p className="text-gray-400 mb-2" ><a href="tel:+919052104849">9052104849</a></p>
+              <p className="text-gray-400 mb-2"><a href="tel:+918919990688">8919990688</a></p>
               <p className="text-gray-400">
                 Beside Shivalayam, Anandapuram Village,<br />
                 Visakhapatnam District, 530052

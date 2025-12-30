@@ -102,8 +102,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Office Hours</h3>
-                    <p className="text-gray-700">Monday - Friday: 8:30 AM - 4:30 PM</p>
-                    <p className="text-gray-700">Saturday: 9:00 AM - 1:00 PM</p>
+                    <p className="text-gray-700">Monday - Saturday: 8:30 AM - 5:00 PM</p>
+                    
                     <p className="text-gray-700">Sunday: Closed</p>
                     <p className="text-sm text-gray-600 mt-2">Appointments recommended for admissions</p>
                   </div>
@@ -117,7 +117,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Email Us</h3>
-                    <p className="text-gray-700">For detailed inquiries, use the form or call us directly</p>
+                    <p className="text-gray-700">For detailed inquiries, reach out to us via whatsapp and email</p>
+                    <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"><a href="mailto:sbvnikethan.school@gmail.com">Send an Email</a></button>
+                    
                     <p className="text-sm text-gray-600 mt-2">We typically respond within 24 hours</p>
                   </div>
                 </div>
