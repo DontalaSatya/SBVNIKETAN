@@ -219,7 +219,7 @@ export default function Curriculum() {
                   <p className="font-semibold">Cricket</p>
                 </div>
                 <div className="bg-white/10 p-3 rounded-lg">
-                  <p className="font-semibold">Football</p>
+                  <p className="font-semibold">Volleyball</p>
                 </div>
                 <div className="bg-white/10 p-3 rounded-lg">
                   <p className="font-semibold">Athletics</p>

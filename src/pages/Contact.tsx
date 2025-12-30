@@ -268,30 +268,50 @@ export default function Contact() {
       </section>
 
       <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us on the Map</h2>
-            <p className="text-gray-600">Located in Anandapuram Village, Visakhapatnam District</p>
-          </div>
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center" style={{ height: '450px' }}>
-              <div className="text-center p-8">
-                <MapPin className="text-gray-400 mx-auto mb-4" size={48} />
-                <p className="text-gray-600 text-lg font-semibold mb-2">
-                  Sri Bharathi Vidya Nikethan E.M School
-                </p>
-                <p className="text-gray-500">
-                  Beside Shivalayam, Anandapuram Village,<br />
-                  Anandapuram Mandal, Visakhapatnam District, 530052
-                </p>
-                <p className="text-sm text-gray-400 mt-4">
-                  Visit us in person for a campus tour and to meet our staff
-                </p>
-              </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-8">
+      <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us on the Map</h2>
+      <p className="text-gray-600">Located in Anandapuram Village, Visakhapatnam District</p>
+    </div>
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <a 
+        href="https://maps.app.goo.gl/4n5U9AZjfeUiyZi58"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="relative" style={{ height: '450px' }}>
+          {/* Embedded Map */}
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3796.5843046982814!2d83.36631899999999!3d17.904880999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDU0JzE3LjYiTiA4M8KwMjEnNTguOCJF!5e0!3m2!1sen!2sin!4v1767082474522!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="absolute inset-0"
+          />
+          {/* Overlay content */}
+          <div className="absolute inset-0 bg-black/30 flex items-center justify-center hover:bg-black/20 transition-colors">
+            <div className="text-center p-8 text-White">
+              <MapPin className="mx-auto mb-4" size={48} />
+              <p className="text-lg font-semibold mb-2">
+                Sri Bharathi Vidya Nikethan E.M School
+              </p>
+              <p className="text-sm">
+                Beside Shivalayam, Anandapuram Village,<br />
+                Anandapuram Mandal, Visakhapatnam District, 530052
+              </p>
+              
             </div>
           </div>
         </div>
-      </section>
+      </a>
+    </div>
+  </div>
+</section>
+
     </div>
   );
 }

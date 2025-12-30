@@ -98,7 +98,7 @@ export default function Home() {
               <div className="flex flex-col items-center">
                 <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl mb-4">
                   <img
-                    src="/gemini_generated_image_iclypqiclypqicly_(1).png"
+                    src="/chairman.png"
                     alt="Chairman"
                     className="w-full h-full object-cover object-top"
                   />

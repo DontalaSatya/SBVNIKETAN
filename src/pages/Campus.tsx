@@ -27,6 +27,9 @@ export default function Campus() {
               <ImageCarousel
                 images={[
                   
+                  '/sri_bharathi_vidya_nikethan.png',
+                  '/sciencelab.png',
+                  '/library.png',
                 ]}
                 alt="School Campus"
                 className="w-full h-96"
@@ -135,7 +138,19 @@ export default function Campus() {
             
               <ImageCarousel
                 images={[
+                  
+                  '/Grouppicture.png',
                   '/video1.mp4',
+                  '/video2.mp4',
+                  '/video3.mp4',
+                  '/video4.mp4',
+                  '/video5.mp4',
+                  '/video6.mp4',
+                  '/video7.mp4',
+                  '/video8.mp4',
+                  
+              
+ 
                   
                 ]}
                 
