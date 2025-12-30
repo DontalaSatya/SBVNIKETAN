@@ -1,4 +1,4 @@
-import { User, GraduationCap, Briefcase, Heart, Clock } from 'lucide-react';
+import { User, GraduationCap, Briefcase, Heart, Clock, Phone } from 'lucide-react';
 
 interface TeamMember {
   id: number;
@@ -7,144 +7,160 @@ interface TeamMember {
   qualification: string;
   designation: string;
   Discipline: string;
+  Contact: string;
   
   isPrincipal?: boolean;
 }
+
 
 export default function Team() {
   const principal: TeamMember = {
     id: 0,
     name: 'Y Krishna Sir',
     image: '/faculty16.jpeg',
-    qualification: 'B.Ed.',
+    qualification: 'B.Sc. B.Ed',
     designation: 'Principal',
     Discipline: 'Mathematics',
+    Contact: '9182376942',
     
       isPrincipal: true,
   };
+  
   const teachers: TeamMember = {
     id: 0,
     name: 'P Ramana Sir',
     image: '/faculty2.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'High School Faculty',
+    qualification: 'M.Sc. B.Ed',
+    designation: 'Administrative Officer',
     Discipline: 'English',
+    Contact: '9440332293',
+      isPrincipal: true,
     
   };
   const teachers1: TeamMember = {
     id: 0,
     name: 'K Shankar Sir',
     image: '/faculty3.jpeg',
-    qualification: 'B.Ed.',
+    qualification: 'M.com. B.Ed.',
     designation: 'High School Faculty',
     Discipline: 'Social Studies',
+    Contact: 'xxx',
    
   };
   const teachers2: TeamMember = {
     id: 0,
     name: 'K Rambabu Sir',
     image: '/faculty4.jpeg',
-    qualification: 'M.Ed., B.Ed.',
+    qualification: 'B.Sc. B.Ed',
     designation: 'High School Faculty',
-    Discipline: 'Life Sciences',
+    Discipline: 'Biology',
+    Contact: 'xxx',
    
   };
   const teachers3: TeamMember = {
     id: 0,
     name: 'I Raja Babu Sir',
     image: '/faculty5.jpeg',
-    qualification: 'M.Ed., B.Ed.',
+    qualification: 'B.Sc. B.Ed',
     designation: 'High School Faculty',
-    Discipline: 'English',
+    Discipline: 'Physics & English',
+    Contact: 'xxx',
    
   };
   const teachers4: TeamMember = {
     id: 0,
     name: 'M Vamsi Sir',
     image: '/faculty6.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'High School Faculty',
+    qualification: 'B.com. D.Ed.',
+    designation: 'Upper Primary School Faculty',
     Discipline: 'English',
+    Contact: 'xxx',
   };
   const teachers5: TeamMember = {
     id: 0,
     name: 'B Dileep Kumar Sir',
     image: '/faculty7.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
-   
+    qualification: 'Trainee in sports & physical education',
+    designation: 'P.E.T',
+    Discipline: 'Physical Education',
+    Contact: 'xxx',
   };
   const teachers6: TeamMember = {
     id: 0,
     name: "E Uma Maheswari Ma'am",
     image: '/faculty8.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
+    qualification: 'MA (Hindi) & B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'Hindi',
+    Contact: 'xxx',
    
   };
   const teachers7: TeamMember = {
     id: 0,
     name: "P Sravani Ma'am",
     image: '/faculty9.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
+    qualification: 'BA B.Ed.',
+    designation: 'Upper Primary School Faculty',
+    Discipline: 'Hindi & Social Studies',
+    Contact: 'xxx',
    
   };
   const teachers8: TeamMember = {
     id: 0,
     name: "P Sirisha Ma'am",
     image: '/faculty10.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
+    qualification: 'D.El.Ed.',
+    designation: 'Primary & Upper Primary School Faculty',
+    Discipline: 'Environmental Studies, Mathematics & Science',
+    Contact: 'xxx',
    
   };
   const teachers9: TeamMember = {
     id: 0,
     name: "R Lalitha Ma'am",
     image: '/faculty11.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
-   
+    qualification: 'B.Sc. B.Ed',
+    designation: 'Primary & Upper Primary School Faculty',
+    Discipline: 'Mathematics & Science',
+    Contact: 'xxx',
   };
   const teachers10: TeamMember = {
     id: 0,
     name: "K Anuradha Ma'am",
     image: '/faculty12.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
-   
+    qualification: 'MSc.',
+    designation: 'Primary & Upper Primary School Faculty',
+    Discipline: 'Environmental Studies & Mathematics',
+    Contact: 'xxx',
   };
   const teachers11: TeamMember = {
     id: 0,
     name: "B Pydiraju Ma'am",
     image: '/faculty13.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Primary School Faculty',
-    Discipline: 'All Subjects',
+    qualification: 'MA (Telugu) & B.Ed.',
+    designation: 'High School Faculty',
+    Discipline: 'Telugu',
+    Contact: 'xxx',
    
   };
   const teachers12: TeamMember = {
     id: 0,
     name: "K Rama Lakshmi Ma'am",
     image: '/faculty14.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Principal',
-    Discipline: 'English',
+    qualification: 'BSc',
+    designation: 'Pre Primary School Faculty',
+    Discipline: 'All Subjects',
+    Contact: 'xxx',
    
   };
   const teachers13: TeamMember = {
     id: 0,
     name: "G Akhila Ma'am",
     image: '/faculty15.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Primary School Faculty',
+    qualification: 'B.Sc.',
+    designation: 'Primary & Upper Primary School Faculty',
     Discipline: 'Mathematics & English',
+    Contact: 'xxx',
    
   };
 
@@ -152,18 +168,20 @@ export default function Team() {
     id: 0,
     name: "P Renuka Ma'am",
     image: '/faculty17.jpeg',
-    qualification: 'M.Ed., B.Ed.',
-    designation: 'Primary School Faculty',
+    qualification: 'D.El.Ed.',
+    designation: 'Primary & Upper Primary School Faculty',
     Discipline: 'All Subjects',
+    Contact: 'xxx',
    
   };
   const teachers16: TeamMember = {
     id: 0,
     name: "B Bharathi Ma'am",
     image: '/faculty18.jpeg',
-    qualification: 'M.Ed., B.Ed.',
+    qualification: 'B.El.Ed.',
     designation: 'Primary School Faculty',
-    Discipline: 'Mathematics & English',
+    Discipline: 'English & Mathematics',
+    Contact: 'xxx',
    
   };
   const TeacherCard = ({ member, featured = false }: { member: TeamMember; featured?: boolean }) => (
@@ -194,7 +212,7 @@ export default function Team() {
             </div>
             {featured && (
               <div className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold text-sm">
-                Principal
+                {member.designation}
               </div>
             )}
           </div>
@@ -227,7 +245,16 @@ export default function Team() {
                 <p className="text-sm font-semibold text-gray-700">Area of Expertise</p>
                 <p className="text-gray-600">{member.Discipline}</p>
               </div>
-            </div>
+             </div>
+             { featured && (<div className="flex items-start space-x-3">
+              <Phone className="text-orange-600 flex-shrink-0 mt-1" size={20} />
+              <div>
+                <p className="text-sm font-semibold text-gray-700">Contact</p>
+                <p className="text-gray-600">{member.Contact}</p>
+              </div>
+             </div>
+            )}
+            
 
             </div>
           </div>
@@ -255,6 +282,8 @@ export default function Team() {
           </div>
 
           <div className="grid gap-8 mb-16">
+            
+            <TeacherCard member={teachers} featured />
             <TeacherCard member={principal} featured />
           </div>
 
@@ -267,23 +296,28 @@ export default function Team() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-              <TeacherCard  member={teachers} />
+              
               <TeacherCard  member={teachers1} />
               <TeacherCard  member={teachers2} />
               <TeacherCard  member={teachers3} />
+              
+              
+              <TeacherCard  member={teachers6} />
+              <TeacherCard  member={teachers11} />
+              
+              <TeacherCard  member={teachers7} />
               <TeacherCard  member={teachers4} />
               <TeacherCard  member={teachers5} />
-              <TeacherCard  member={teachers6} />
-              <TeacherCard  member={teachers7} />
               <TeacherCard  member={teachers8} />
               <TeacherCard  member={teachers9} />
               <TeacherCard  member={teachers10} />
-              <TeacherCard  member={teachers11} />
-              <TeacherCard  member={teachers12} />
+              
+              
               <TeacherCard  member={teachers13} />
               
               <TeacherCard  member={teachers15} />
               <TeacherCard  member={teachers16} />
+              <TeacherCard  member={teachers12} />
 
             
           </div>

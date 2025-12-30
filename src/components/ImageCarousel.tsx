@@ -15,26 +15,30 @@ export default function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
-  useEffect(() => {
-    // Auto-scroll functionality
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, autoScrollInterval);
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [images.length, autoScrollInterval]);
+  // Detect if source is a video file
+  const isVideo = (src: string) => {
+    return /\.(mp4|webm|mov|avi|mkv)$/i.test(src);
+  };
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
+    setIsVideoPlaying(false);
+    
     // Reset the interval when manually changing slides
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
+    
+    // Check if new slide is a video
+    if (isVideo(images[index])) {
+      // Don't start auto-scroll for videos
+      return;
+    }
+    
+    // Restart auto-scroll for images
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, autoScrollInterval);
@@ -48,22 +52,76 @@ export default function ImageCarousel({
     goToSlide((currentIndex + 1) % images.length);
   };
 
+  // Handle video end
+  const handleVideoEnd = () => {
+    setIsVideoPlaying(false);
+    goToNext();
+  };
+
+  // Handle video play
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true);
+  };
+
+  useEffect(() => {
+    const currentSrc = images[currentIndex];
+    
+    // Clear any existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    // If current item is a video, don't start auto-scroll
+    if (isVideo(currentSrc)) {
+      setIsVideoPlaying(true);
+      return;
+    }
+
+    // Auto-scroll functionality for images
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, autoScrollInterval);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [currentIndex, images, autoScrollInterval]);
+
   return (
     <div className={`relative overflow-hidden w-full ${className}`}>
-      {/* Image Container with smooth transition */}
+      {/* Media Container with smooth transition */}
       <div 
         className="flex transition-transform duration-700 ease-in-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {images.map((image, index) => (
-          <div key={index} className="min-w-full h-full flex-shrink-0">
-            <img
-              src={image}
-              alt={`${alt} ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        ))}
+        {images.map((src, index) => {
+          const video = isVideo(src);
+          
+          return (
+            <div key={index} className="min-w-full h-full flex-shrink-0 relative">
+              {video ? (
+                <video
+                  ref={index === currentIndex ? videoRef : null}
+                  src={src}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  playsInline
+                  onEnded={handleVideoEnd}
+                  onPlay={handleVideoPlay}
+                />
+              ) : (
+                <img
+                  src={src}
+                  alt={`${alt} ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Navigation Arrows */}
@@ -72,7 +130,7 @@ export default function ImageCarousel({
           <button
             onClick={goToPrevious}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all z-10"
-            aria-label="Previous image"
+            aria-label="Previous"
           >
             <svg
               className="w-6 h-6"
@@ -91,7 +149,7 @@ export default function ImageCarousel({
           <button
             onClick={goToNext}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all z-10"
-            aria-label="Next image"
+            aria-label="Next"
           >
             <svg
               className="w-6 h-6"
@@ -130,4 +188,3 @@ export default function ImageCarousel({
     </div>
   );
 }
-
