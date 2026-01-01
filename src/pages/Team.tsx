@@ -184,6 +184,16 @@ export default function Team() {
     Contact: 'xxx',
    
   };
+  const teachers17: TeamMember = {
+    id: 0,
+    name: "B Jhansi Lakshmi Bai Ma'am",
+    image: '/Faculty19.jpeg',
+    qualification: 'B.Com. Computers',
+    designation: 'Accountant & Computer Operator',
+    Discipline: 'IT & Accounting',
+    Contact: 'xxx',
+   
+  };
   const TeacherCard = ({ member, featured = false }: { member: TeamMember; featured?: boolean }) => (
     <div
       className={`bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1 ${
@@ -269,7 +279,7 @@ export default function Team() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Team</h1>
           <p className="text-xl text-blue-50 max-w-3xl">
-            Meet our dedicated faculty members who are committed to nurturing young minds and
+            Meet our dedicated faculty & non academic staff, who are committed to our shared vision of nurturing young minds and
             building a brighter future
           </p>
         </div>
@@ -287,12 +297,7 @@ export default function Team() {
             <TeacherCard member={principal} featured />
           </div>
 
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Faculty</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced and passionate educators dedicated to student success
-            </p>
-          </div>
+         
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         
@@ -304,9 +309,10 @@ export default function Team() {
               
               <TeacherCard  member={teachers6} />
               <TeacherCard  member={teachers11} />
-              
+             
               <TeacherCard  member={teachers7} />
               <TeacherCard  member={teachers4} />
+              <TeacherCard  member={teachers17} />
               <TeacherCard  member={teachers5} />
               <TeacherCard  member={teachers8} />
               <TeacherCard  member={teachers9} />
