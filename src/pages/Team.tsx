@@ -156,7 +156,7 @@ export default function Team() {
   const teachers13: TeamMember = {
     id: 0,
     name: "G Akhila Ma'am",
-    image: '/faculty15.jpeg',
+    image: '/faculty15-copy.jpg',
     qualification: 'B.Sc.',
     designation: 'Primary & Upper Primary School Faculty',
     Discipline: 'Mathematics & English',
