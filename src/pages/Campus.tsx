@@ -32,7 +32,7 @@ export default function Campus() {
                   '/library.png',
                 ]}
                 alt="School Campus"
-                className="w-full h-96"
+                className="w-full h-full"
                 autoScrollInterval={5000}
               />
             </div>

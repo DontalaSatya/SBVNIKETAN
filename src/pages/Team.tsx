@@ -79,7 +79,7 @@ export default function Team() {
   const teachers5: TeamMember = {
     id: 0,
     name: 'B Dileep Kumar Sir',
-    image: '/faculty7.jpeg',
+    image: '/faculty-7.jpg',
     qualification: 'Trainee in sports & physical education',
     designation: 'P.E.T',
     Discipline: 'Physical Education',
@@ -156,7 +156,7 @@ export default function Team() {
   const teachers13: TeamMember = {
     id: 0,
     name: "G Akhila Ma'am",
-    image: '/faculty15-copy.jpg',
+    image: '/faculty15.jpg',
     qualification: 'B.Sc.',
     designation: 'Primary & Upper Primary School Faculty',
     Discipline: 'Mathematics & English',
