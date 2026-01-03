@@ -79,7 +79,7 @@ export default function Team() {
   const teachers5: TeamMember = {
     id: 0,
     name: 'B Dileep Kumar Sir',
-    image: '/faculty-7.jpg',
+    image: '/faculty7.jpg',
     qualification: 'Trainee in sports & physical education',
     designation: 'P.E.T',
     Discipline: 'Physical Education',
