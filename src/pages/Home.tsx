@@ -11,10 +11,10 @@ export default function Home() {
     script.id = 'transapien-chat-widget-script';
     script.innerHTML = `
       (function() {
-        var TRANSAPIEN_CHANNEL_ID = "b25c5b71-df48-4dfc-95d5-b1bacf153ffe";
-        var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/b25c5b71-df48-4dfc-95d5-b1bacf153ffe";
-        var TRANSAPIEN_SECRET = "3470df40-efc1-45b8-b796-fbbbb96a3eb8";
-        var TRANSAPIEN_TITLE = "Sri Bharathi Vidya Nikethan Support";
+        var TRANSAPIEN_CHANNEL_ID = "597fd07c-0eea-42a3-8e72-d5c676e5e57d";
+        var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/597fd07c-0eea-42a3-8e72-d5c676e5e57d";
+        var TRANSAPIEN_SECRET = "f5504c26-89db-4934-8e04-3ea3e8404982";
+        var TRANSAPIEN_TITLE = "sbv niketan";
 
         var btn = document.createElement('div');
         btn.id = 'transapien-chat-btn';
