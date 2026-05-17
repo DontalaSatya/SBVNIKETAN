@@ -11,11 +11,11 @@ export default function Home() {
     script.id = 'transapien-chat-widget-script';
     script.innerHTML = `
   (function() {
-    var TRANSAPIEN_CHANNEL_ID = "dfa14b60-9126-438b-b235-fe685d30000f";
-    var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/dfa14b60-9126-438b-b235-fe685d30000f";
+    var TRANSAPIEN_CHANNEL_ID = "da57eb14-ccae-440f-926c-8c7eba3c8447";
+    var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/da57eb14-ccae-440f-926c-8c7eba3c8447";
     var TRANSAPIEN_API_BASE = "https://api.transapien.com";
-    var TRANSAPIEN_SECRET = "c2c8c6d7-26fd-451b-b10b-6b7e5adea2b5";
-    var TRANSAPIEN_TITLE = "support inbox";
+    var TRANSAPIEN_SECRET = "6ab62360-cdbb-489e-a5b9-683631b48666";
+    var TRANSAPIEN_TITLE = "support box";
     var ticketId = null;
     var lastSeenAt = null;
     var sse = null;
