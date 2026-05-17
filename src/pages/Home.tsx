@@ -11,11 +11,11 @@ export default function Home() {
     script.id = 'transapien-chat-widget-script';
     script.innerHTML = `
   (function() {
-    var TRANSAPIEN_CHANNEL_ID = "597fd07c-0eea-42a3-8e72-d5c676e5e57d";
-    var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/597fd07c-0eea-42a3-8e72-d5c676e5e57d";
+    var TRANSAPIEN_CHANNEL_ID = "dfa14b60-9126-438b-b235-fe685d30000f";
+    var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/dfa14b60-9126-438b-b235-fe685d30000f";
     var TRANSAPIEN_API_BASE = "https://api.transapien.com";
-    var TRANSAPIEN_SECRET = "f5504c26-89db-4934-8e04-3ea3e8404982";
-    var TRANSAPIEN_TITLE = "sbv niketan";
+    var TRANSAPIEN_SECRET = "c2c8c6d7-26fd-451b-b10b-6b7e5adea2b5";
+    var TRANSAPIEN_TITLE = "support inbox";
     var ticketId = null;
     var lastSeenAt = null;
     var sse = null;
