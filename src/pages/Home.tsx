@@ -111,11 +111,13 @@ export default function Home() {
       var email = document.getElementById('tx-email').value.trim() || null;
       appendMessage(msg, false);
       input.value = '';
-      fetch(TRANSAPIEN_WEBHOOK_URL, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json','x-webhook-secret':TRANSAPIEN_SECRET},
-        body: JSON.stringify({customer_name:name,customer_email:email,subject:'Live chat from website',message:msg})
-      }).then(function(r){return r.json();}).then(function(data){
+      var payload = {customer_name:name,customer_email:email,subject:'Live chat from website',message:msg};
+if (ticketId) payload.ticket_id = ticketId;
+fetch(TRANSAPIEN_WEBHOOK_URL, {
+  method: 'POST',
+  headers: {'Content-Type':'application/json','x-webhook-secret':TRANSAPIEN_SECRET},
+  body: JSON.stringify(payload)
+}).then(function(r){return r.json();}).then(function(data){
         if (data && data.ticket_id && !ticketId) {
           ticketId = data.ticket_id;
           try { localStorage.setItem('tx_ticket_' + TRANSAPIEN_CHANNEL_ID, ticketId); } catch(e){}
