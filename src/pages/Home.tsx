@@ -10,71 +10,133 @@ export default function Home() {
     const script = document.createElement('script');
     script.id = 'transapien-chat-widget-script';
     script.innerHTML = `
-      (function() {
-        var TRANSAPIEN_CHANNEL_ID = "597fd07c-0eea-42a3-8e72-d5c676e5e57d";
-        var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/597fd07c-0eea-42a3-8e72-d5c676e5e57d";
-        var TRANSAPIEN_SECRET = "f5504c26-89db-4934-8e04-3ea3e8404982";
-        var TRANSAPIEN_TITLE = "sbv niketan";
+  (function() {
+    var TRANSAPIEN_CHANNEL_ID = "597fd07c-0eea-42a3-8e72-d5c676e5e57d";
+    var TRANSAPIEN_WEBHOOK_URL = "https://api.transapien.com/api/support/webhook/597fd07c-0eea-42a3-8e72-d5c676e5e57d";
+    var TRANSAPIEN_API_BASE = "https://api.transapien.com";
+    var TRANSAPIEN_SECRET = "f5504c26-89db-4934-8e04-3ea3e8404982";
+    var TRANSAPIEN_TITLE = "sbv niketan";
+    var ticketId = null;
+    var lastSeenAt = null;
+    var sse = null;
 
-        var btn = document.createElement('div');
-        btn.id = 'transapien-chat-btn';
-        btn.innerHTML = '\u{1F4AC}';
-        btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#1e40af;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99999;';
-        document.body.appendChild(btn);
+    var btn = document.createElement('div');
+    btn.id = 'transapien-chat-btn';
+    btn.innerHTML = '\u{1F4AC}';
+    btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#1e40af;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:99999;';
+    document.body.appendChild(btn);
 
-        var panel = document.createElement('div');
-        panel.id = 'transapien-chat-panel';
-        panel.style.cssText = 'position:fixed;bottom:90px;right:20px;width:340px;height:480px;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.2);display:none;flex-direction:column;overflow:hidden;z-index:99999;font-family:-apple-system,sans-serif;';
-        panel.innerHTML = '<div style="background:#1e40af;color:#fff;padding:14px;font-weight:600;">'+TRANSAPIEN_TITLE+'</div>'+
-          '<div id="tx-msgs" style="flex:1;overflow-y:auto;padding:12px;font-size:14px;color:#1e293b;background:#f8fafc;"></div>'+
-          '<form id="tx-form" style="display:flex;border-top:1px solid #e2e8f0;">'+
-            '<input id="tx-name" placeholder="Your name" style="flex:1;border:none;padding:10px;font-size:13px;outline:none;border-right:1px solid #e2e8f0;"/>'+
-            '<input id="tx-email" placeholder="Email (optional)" style="flex:1;border:none;padding:10px;font-size:13px;outline:none;"/>'+
-          '</form>'+
-          '<form id="tx-send" style="display:flex;border-top:1px solid #e2e8f0;">'+
-            '<input id="tx-input" placeholder="Type a message..." style="flex:1;border:none;padding:12px;font-size:14px;outline:none;"/>'+
-            '<button type="submit" style="background:#1e40af;color:#fff;border:none;padding:0 16px;cursor:pointer;font-weight:600;">Send</button>'+
-          '</form>';
-        document.body.appendChild(panel);
+    var panel = document.createElement('div');
+    panel.id = 'transapien-chat-panel';
+    panel.style.cssText = 'position:fixed;bottom:90px;right:20px;width:340px;height:480px;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.2);display:none;flex-direction:column;overflow:hidden;z-index:99999;font-family:-apple-system,sans-serif;';
+    panel.innerHTML = '<div style="background:#1e40af;color:#fff;padding:14px;font-weight:600;">'+TRANSAPIEN_TITLE+'</div>'+
+      '<div id="tx-msgs" style="flex:1;overflow-y:auto;padding:12px;font-size:14px;color:#1e293b;background:#f8fafc;"></div>'+
+      '<form id="tx-form" style="display:flex;border-top:1px solid #e2e8f0;">'+
+        '<input id="tx-name" placeholder="Your name" style="flex:1;border:none;padding:10px;font-size:13px;outline:none;border-right:1px solid #e2e8f0;"/>'+
+        '<input id="tx-email" placeholder="Email (optional)" style="flex:1;border:none;padding:10px;font-size:13px;outline:none;"/>'+
+      '</form>'+
+      '<form id="tx-send" style="display:flex;border-top:1px solid #e2e8f0;">'+
+        '<input id="tx-input" placeholder="Type a message..." style="flex:1;border:none;padding:12px;font-size:14px;outline:none;"/>'+
+        '<button type="submit" style="background:#1e40af;color:#fff;border:none;padding:0 16px;cursor:pointer;font-weight:600;">Send</button>'+
+      '</form>';
+    document.body.appendChild(panel);
 
-        btn.onclick = function() {
-          panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+    function appendMessage(text, fromAgent) {
+      var msgsBox = document.getElementById('tx-msgs');
+      if (!msgsBox) return;
+      var div = document.createElement('div');
+      div.style.cssText = 'margin-bottom:8px;text-align:' + (fromAgent ? 'left' : 'right') + ';';
+      var bg = fromAgent ? '#e2e8f0' : '#1e40af';
+      var color = fromAgent ? '#334155' : '#fff';
+      div.innerHTML = '<span style="background:'+bg+';color:'+color+';padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">'+String(text).replace(/</g,'&lt;')+'</span>';
+      msgsBox.appendChild(div);
+      msgsBox.scrollTop = msgsBox.scrollHeight;
+    }
+
+    function subscribeToReplies(tid) {
+      if (sse) { try { sse.close(); } catch(e){} }
+      try {
+        sse = new EventSource(TRANSAPIEN_API_BASE + '/api/support/webchat/stream/' + tid);
+        sse.onmessage = function(ev) {
+          try {
+            var data = JSON.parse(ev.data);
+            if (data.type === 'agent_message' && data.content) {
+              appendMessage(data.content, true);
+              lastSeenAt = data.created_at || new Date().toISOString();
+              try { localStorage.setItem('tx_last_seen_' + tid, lastSeenAt); } catch(e){}
+            }
+          } catch(e) {}
         };
+      } catch(e) {}
+    }
 
-        document.getElementById('tx-send').onsubmit = function(e) {
-          e.preventDefault();
-          var input = document.getElementById('tx-input');
-          var msg = input.value.trim();
-          if (!msg) return;
-          var name = document.getElementById('tx-name').value.trim() || 'Visitor';
-          var email = document.getElementById('tx-email').value.trim() || null;
-          var msgsBox = document.getElementById('tx-msgs');
-          var div = document.createElement('div');
-          div.style.cssText = 'margin-bottom:8px;text-align:right;';
-          div.innerHTML = '<span style="background:#1e40af;color:#fff;padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">'+msg.replace(/</g,'&lt;')+'</span>';
-          msgsBox.appendChild(div);
-          msgsBox.scrollTop = msgsBox.scrollHeight;
-          input.value = '';
-          fetch(TRANSAPIEN_WEBHOOK_URL, {
-            method: 'POST',
-            headers: {'Content-Type':'application/json','x-webhook-secret':TRANSAPIEN_SECRET},
-            body: JSON.stringify({customer_name:name,customer_email:email,subject:'Live chat from website',message:msg})
-          }).then(function(){
-            var ack = document.createElement('div');
-            ack.style.cssText = 'margin-bottom:8px;text-align:left;';
-            ack.innerHTML = '<span style="background:#e2e8f0;color:#334155;padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">Thanks! We received your message and will get back to you soon.</span>';
-            msgsBox.appendChild(ack);
-            msgsBox.scrollTop = msgsBox.scrollHeight;
-          }).catch(function(err){
-            console.error('chat send failed', err);
-            var errMsg = document.createElement('div');
-            errMsg.style.cssText = 'margin-bottom:8px;text-align:left;';
-            errMsg.innerHTML = '<span style="background:#fee2e2;color:#991b1b;padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">Could not send — please try again or call us.</span>';
-            msgsBox.appendChild(errMsg);
-          });
-        };
-      })();
-    `;
+    function fetchMissedMessages(tid) {
+      var url = TRANSAPIEN_API_BASE + '/api/support/webchat/messages/' + tid;
+      if (lastSeenAt) url += '?since=' + encodeURIComponent(lastSeenAt);
+      fetch(url).then(function(r){return r.json();}).then(function(rows){
+        if (!Array.isArray(rows)) return;
+        rows.forEach(function(m){
+          appendMessage(m.content, true);
+          lastSeenAt = m.created_at;
+        });
+        if (lastSeenAt) {
+          try { localStorage.setItem('tx_last_seen_' + tid, lastSeenAt); } catch(e){}
+        }
+      }).catch(function(){});
+    }
+
+    try {
+      ticketId = localStorage.getItem('tx_ticket_' + TRANSAPIEN_CHANNEL_ID) || null;
+      lastSeenAt = ticketId ? localStorage.getItem('tx_last_seen_' + ticketId) : null;
+    } catch(e){}
+
+    if (ticketId) {
+      fetchMissedMessages(ticketId);
+      subscribeToReplies(ticketId);
+    }
+
+    btn.onclick = function() {
+      panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+      if (panel.style.display === 'flex' && ticketId) {
+        fetchMissedMessages(ticketId);
+      }
+    };
+
+    document.getElementById('tx-send').onsubmit = function(e) {
+      e.preventDefault();
+      var input = document.getElementById('tx-input');
+      var msg = input.value.trim();
+      if (!msg) return;
+      var name = document.getElementById('tx-name').value.trim() || 'Visitor';
+      var email = document.getElementById('tx-email').value.trim() || null;
+      appendMessage(msg, false);
+      input.value = '';
+      fetch(TRANSAPIEN_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','x-webhook-secret':TRANSAPIEN_SECRET},
+        body: JSON.stringify({customer_name:name,customer_email:email,subject:'Live chat from website',message:msg})
+      }).then(function(r){return r.json();}).then(function(data){
+        if (data && data.ticket_id && !ticketId) {
+          ticketId = data.ticket_id;
+          try { localStorage.setItem('tx_ticket_' + TRANSAPIEN_CHANNEL_ID, ticketId); } catch(e){}
+          subscribeToReplies(ticketId);
+        }
+        var ack = document.createElement('div');
+        ack.style.cssText = 'margin-bottom:8px;text-align:left;';
+        ack.innerHTML = '<span style="background:#e2e8f0;color:#334155;padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">Thanks! We received your message and will reply here shortly.</span>';
+        var msgsBox = document.getElementById('tx-msgs');
+        if (msgsBox) { msgsBox.appendChild(ack); msgsBox.scrollTop = msgsBox.scrollHeight; }
+      }).catch(function(err){
+        console.error('chat send failed', err);
+        var errMsg = document.createElement('div');
+        errMsg.style.cssText = 'margin-bottom:8px;text-align:left;';
+        errMsg.innerHTML = '<span style="background:#fee2e2;color:#991b1b;padding:6px 10px;border-radius:10px;display:inline-block;max-width:80%;">Could not send — please try again or call us.</span>';
+        var msgsBox = document.getElementById('tx-msgs');
+        if (msgsBox) msgsBox.appendChild(errMsg);
+      });
+    };
+  })();
+`;
     document.body.appendChild(script);
 
     // Cleanup on unmount
